@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>box model</title>
+	<style type="text/css">
+		/* note */
+		.note {
+			background-color: #fff3d4;
+			border-color: #f6b73c;
+			border-left-width: 4px;
+			border-left-style: solid;
+			padding: 20px;
+			border-radius: 10px; 
+			margin: 20px 0;
+			max-width: 42rem;
+			font-size: 1rem;
+		}
+
+		code {
+			background-color: rgba(220,220,220,.5);
+		}
+		
+
+		/*section*/
+		.sec {
+			width: 80%;
+			margin: 0 auto;
+			vertical-align: top;
+		} 
+
+		.sectionHR {
+			border: 2px solid #987cb9;
+		}
+
+		.tspan{
+			padding: 0 4px 0 40px;
+			background-color: #333;
+			color: #fff;
+		}
+
+		/*=======================================*/
+		
+		.contentBox,  .borderBox{
+			width: 480px;
+			height: 360px;
+			border: 20px solid black;
+			padding: 30px;
+			margin: 30px;
+
+			vertical-align: top;
+			background-color: gray;
+			background-clip: content-box;
+		}
+
+		.contentBox,  .borderBox, .bmContainer, .overflow, .bgClip  {
+			display: inline-block;
+			position: relative;
+		}
+		
+		.borderBox{
+			box-sizing: border-box;
+		}
+
+		.bmContainer span, 
+		.overflow span,
+		.bgClip span {
+			position: absolute;
+		}
+
+		.tlSignSpan {
+			color: white;
+		}
+
+		.overflow, .bmContainer, .bgClip {
+			border: 1px dashed black;
+		}
+
+		.overflow, .bgClip {
+			margin: 10px;
+			padding: 30px;
+			width: 150px;
+			height: 100px;
+			vertical-align: top;
+		}
+
+		.overflow span, .bgClip span {
+			top: 0;
+			left: 0;
+			color: white;
+			background-color: black;
+		}
+
+		.bgClip {
+			border:  10px dashed gray;
+			background-color: red;
+			font-size: 0.8rem;
+		}
+
+	</style>
+</head>
+<body>
+	
+	<!-- box model -->
+	<section id="boxmodel" class="sec">
+		<hr class="sectionHR">
+		<h2>Box Model</h2>
+		<h3><span class="tspan">box model rectangle & box-sizing</span></h3>
+		<h4>model box rectangle: </h4>
+		<code>margin</code> + <code>border</code> + <code>padding</code> + <code>content</code>
+		<h4>box-sizing: </h4>
+		<ul>
+			<li><code>content-box</code>: <code>width</code> = content width</li>
+			<li>
+				<code>border-box</code>: <code>width</code> = <code>border + padding</code> + content width
+			</li>
+		</ul>
+		
+		<div class="bmContainer">
+			<div class="contentBox">
+				<span class="tlSignSpan">
+					<code>box-sizing: content-box</code><br>
+					<code>width: 480px</code><br>
+					<code>height: 360px</code>
+				</span>
+			</div>
+			<div class="borderBox">
+				<span class="tlSignSpan">
+					<code>box-sizing: border-box</code><br>
+					<code>width: 480px</code><br>
+					<code>height: 360px</code>
+				</span>
+			</div>
+
+			<span style="left: 300px; top: 6px">margin</span>
+			<span style="color: white; left: 300px; top: 28px">border</span>
+			<span style="left: 300px; top: 53px">padding</span>
+			<span style="left: 300px; top: 260px">content</span>
+
+			<span style="left: 900px; top: 6px">margin</span>
+			<span style="color: white; left: 900px; top: 28px">border</span>
+			<span style="left: 900px; top: 53px">padding</span>
+			<span style="left: 900px; top: 200px">content</span>
+		</div>
+		
+		<p class="note">
+			<strong>Note: </strong>  <br>
+			giving above two box  the same <code>width, padding, border</code> and different <code>box-sizing</code>
+		</p>
+		<h4>overflow: </h4>
+		<ul>
+			<li><code>auto</code>: overflow content is hidden, the scroll bars are shown;</li>
+			<li><code>hidden</code>: overflow content is hidden without scroll bars</li>
+			<li><code>visible</code>: overflow content is shown out side the box without scroll bars</li>
+		</ul>
+
+			
+		<div class="overflow" style="overflow: auto;">
+			<span>overflow: auto</span>
+			aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+		</div>
+
+		<div class="overflow" style="overflow: hidden;">
+			<span>overflow: hidden</span>
+			aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+		</div>
+
+		<div class="overflow" style="overflow: visible;">
+			<span>overflow: visible</span>
+			aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+		</div>
+
+		<h4>background-clip: </h4>
+		<ul>
+			<li><code>border-box</code>: the bg extends to the outside edge of the border</li>
+			<li><code>padding-box</code>: the bg extends to the outside edge of the padding</li>
+			<li><code>content-box</code>: the bg within the content box</li>
+		</ul>
+
+		<div class="bgClip" style="background-clip: border-box;">
+			<span>background-clip: border-box</span>
+		</div>
+
+		<div class="bgClip" style="background-clip: padding-box;">
+			<span>background-clip: padding-box</span>
+		</div>
+
+		<div class="bgClip" style="background-clip: content-box;">
+			<span>background-clip: content-box</span>
+		</div>
+	</section>
+
+	
+
+	<!-- 导航 -->
+	<div style="position: fixed;bottom: 10px;">
+		<a href="#boxmodel"> top</a><br>
+	</div>
+</html>
