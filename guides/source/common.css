@@ -1,0 +1,33 @@
+code {
+	background-color: rgb(220, 220, 220, 0.5);
+}
+
+section.sec hr:first-child {
+	border: 2px solid #987cb9;
+}
+
+/*section*/
+.sec {
+	width: 80%;
+	margin: 0 auto;
+	vertical-align: top;
+} 
+
+.tspan {
+	padding: 0 4px 0 40px;
+	background-color: #333;
+	color: #fff;
+	font-size: 1.3rem;
+}
+
+.note {
+	background-color: #fff3d4;
+	border-color: #f6b73c;
+	border-left-width: 4px;
+	border-left-style: solid;
+	padding: 20px;
+	border-radius: 10px; 
+	margin: 20px 0;
+	max-width: 42rem;
+	font-size: 1rem;
+}

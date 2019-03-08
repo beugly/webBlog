@@ -1,0 +1,29 @@
+ol, li {
+    margin: 0;
+    padding: 0;
+}
+
+.column-container {
+    display: flex;
+}
+
+.column-content {
+    flex: 4;
+}
+
+.column-catalog {
+    flex: 1;
+}
+
+.column-catalog > details {
+    margin: 6px 12px;
+}
+
+details > ol {
+    padding: 0 12px;
+}
+
+ol > li {
+    list-style-type: none;
+    padding: 8px 0px;
+}

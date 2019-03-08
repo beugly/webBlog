@@ -2,43 +2,8 @@
 <html>
 <head>
 	<title>box model</title>
+	<link rel="stylesheet" href="../source/common.css">
 	<style type="text/css">
-		/* note */
-		.note {
-			background-color: #fff3d4;
-			border-color: #f6b73c;
-			border-left-width: 4px;
-			border-left-style: solid;
-			padding: 20px;
-			border-radius: 10px; 
-			margin: 20px 0;
-			max-width: 42rem;
-			font-size: 1rem;
-		}
-
-		code {
-			background-color: rgba(220,220,220,.5);
-		}
-		
-
-		/*section*/
-		.sec {
-			width: 80%;
-			margin: 0 auto;
-			vertical-align: top;
-		} 
-
-		.sectionHR {
-			border: 2px solid #987cb9;
-		}
-
-		.tspan{
-			padding: 0 4px 0 40px;
-			background-color: #333;
-			color: #fff;
-		}
-
-		/*=======================================*/
 		
 		.contentBox,  .borderBox{
 			width: 480px;
@@ -99,10 +64,9 @@
 	</style>
 </head>
 <body>
-	
 	<!-- box model -->
 	<section id="boxmodel" class="sec">
-		<hr class="sectionHR">
+		<hr>
 		<h2>Box Model</h2>
 		<h3><span class="tspan">box model rectangle & box-sizing</span></h3>
 		<h4>model box rectangle: </h4>
@@ -187,6 +151,18 @@
 		<div class="bgClip" style="background-clip: content-box;">
 			<span>background-clip: content-box</span>
 		</div>
+
+		<h4>margin collapsing:</h4>
+		<p>
+			if two adjacent elements both have the margin set on them. and the two margins touch, the larger of the two remains, and the smaller one disappears. (in vertical, not horizontal)
+		</p>
+		<div style="width: 200px; height: 100px; margin-bottom: 10px;border: 1px solid black;">
+			<code>margin-bottom:10px;</code>
+		</div>
+		<div style="width: 200px; height: 100px; margin-top : 20px;border: 1px solid black;">
+			<code>margin-top:20px;</code>
+		</div>
+		the two <code>div</code>, use the larger one: <code>margin-top:20px;</code>
 	</section>
 
 	
