@@ -3,54 +3,14 @@
 <head>
     <title>Guides</title>
     <link rel="stylesheet" href="source/guides.css">
-    <script type="text/javascript">
-        // set iframe height
-        function onload_content() {
-            var contentIFrame = document.getElementById("content_iframe");
-            var h = content_iframe.contentWindow.document.body.clientHeight + 100;
-            contentIFrame.setAttribute("height", h);
-        }
-
-        //guide selected
-        function onGuideSelect(url) {
-             var contentIFrame = document.getElementById("content_iframe");
-             contentIFrame.src = url;
-             console.log(url);
-        }
-
-    </script>
+    <script type="text/javascript"  src="source/guides_index.js"></script>
 </head>
-<body>
+<body onload="onload_main()">
     <h1>Guides</h1>
     <div class="column-container">
         <div class="column-catalog">
             <strong>Catalog</strong>
             <hr style="border: 1px solid #d7d7d7; width: 80%;margin-left: 0">
-            <details>
-                <summary>HTML</summary>
-                <ol>
-                    <li>
-                        <a href="html/DOM.html">Document Object Model</a>
-                    </li>
-                </ol>
-            </details>
-            <details open>
-                <summary>CSS</summary>
-                <ol>
-                    <li>
-                        <a href="" onclick="onGuideSelect('css/css selector.html');return false;">CSS Selector</a>
-                    </li>
-                    <li>
-                        <a href="" onclick="onGuideSelect('css/box model.html');return false;">Box model</a>
-                    </li>
-                    <li>
-                        <a href="" onclick="onGuideSelect('css/css layout.html');return false;">CSS Layout</a>
-                    </li>
-                </ol>
-            </details>
-            <details>
-                <summary>JS</summary>
-            </details>
         </div>
         
         <div id="content_div" class="column-content">
