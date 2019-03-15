@@ -1,98 +1,101 @@
   /* jshint esversion: 6 */ 
+
 /*main load*/
   function onload_main() {
-    console.log("=======onload_main=======");
-    addDetails();
-    addLinks();
+    loadGuidesConfig();
 
-    var url = window.location.href;
-    var arr = url.split("?");
-    var para = arr[1];
-    onGuideSelect(para);
+    //default
+    var f = document.querySelector("#content_iframe");
+    f.src = "welcome.html";
   }
 
 // set iframe height
 function onload_content() {
-    var contentIFrame = document.getElementById("content_iframe");
-    var h = content_iframe.contentWindow.document.body.clientHeight + 100;
-    contentIFrame.setAttribute("height", h);
+     var f = document.querySelector("#content_iframe");
+    var h = f.contentWindow.document.body.clientHeight;
+    console.log(f.contentWindow.document);
+    f.setAttribute("height", h);
 }
-
-//guide selected
-function onGuideSelect(url) {
-     var contentIFrame = document.getElementById("content_iframe");
-     contentIFrame.src = url;
-}
-
 
 //===========create guides catalog============
 
-/*ids*/
-let HMLT_ID = "htmlDetails";
-let CSS_ID = "cssDetails";
-let JS_ID = "jsDetails";
+/*the path of config xml*/
+let config_url = "source/guides_conf.xml";
 
+// load config
+function loadGuidesConfig() {
+    fetch(config_url)
+    .then(function (response){
+        return response.text();
+    })
+    .then(function (text){
+        var parser = new DOMParser();
+        var xml = parser.parseFromString(text, "application/xml");
+        parseDetails(xml.children[0]);
+    })
+    .catch(function (err) {
+        console.log(err, "shit!");
+    });
+}
+
+// update guides use config xml
+function parseDetails(xml) {
+    var details, id, summary, folder, open;
+    for (var i = 0; i < xml.children.length; i++) {
+        details = xml.children[i];
+        folder = details.nodeName;
+        id = details.getAttribute("id");
+        summary = details.getAttribute("summary");
+        open = details.getAttribute("open");
+        createDetails(id, summary, open);
+        parseItems(details.children, folder, id);
+    }
+}
+
+//parse items
+function parseItems(items, folder, detailsId) {
+    var item, href, desc;
+    for (var i = 0; i < items.length; i++) {
+        item = items[i];
+        href = folder + "/" + item.getAttribute("name");
+        desc = item.textContent;
+        createLink(desc, href, detailsId);
+    }
+}
 
 /*add details*/
-function createDetails($id, $summary, $open = false) {
+function createDetails(id, summary, open = false) {
+    var detailsContainer = document.querySelector(".column-container > .column-catalog");
+
     var d = document.createElement("details");
-    d.open = $open;
-    d.id = $id;
-    
+    d.open = open;
+    d.id = id;
+
     var s = document.createElement("summary");
-    s.textContent = $summary;
+    s.textContent = summary;
     d.appendChild(s);
 
     var ol = document.createElement("ol");
     d.appendChild(ol);
 
-    return d;
+    detailsContainer.appendChild(d);
 }
 
 /*add guide link*/
-function addLink($text, $url, $detailsID) {
+function createLink(text, url, detailsId) {
     var a = document.createElement("a");
-    a.href = "?" + $url;
-    a.textContent = $text;
+    a.href = url;
+    a.target = "content_iframe";
+    a.textContent = text;
 
     var li = document.createElement("li");
     li.appendChild(a);
 
-    var d = document.getElementById($detailsID);
+    var d = document.getElementById(detailsId);
     var ol = d.querySelector("details > ol");
     ol.appendChild(li);
 }
 
-/*add details*/
-function addDetails() {
-      var div = document.querySelector(".column-container>.column-catalog");
-    var d;
-
-    d = createDetails(HMLT_ID, "HTML");
-    div.appendChild(d);
-
-    d = createDetails(CSS_ID, "CSS", true);
-    div.appendChild(d);
-
-    d = createDetails(JS_ID, "JS");
-    div.appendChild(d);
-}
-
-/*add links*/
-function addLinks() {
-    // html
-    addLink("Document Object Model", "html/DOM.html", HMLT_ID);
-
-    // css
-    addLink("CSS Selector", "css/css selector.html", CSS_ID);
-    addLink("Box model", "css/box model.html", CSS_ID);
-    addLink("CSS Layout", "css/css layout.html", CSS_ID);
-
-
-
-    // js
-    addLink("Manipulation Document", "js/Manipulation Document.html", JS_ID);
-}
 
 
 

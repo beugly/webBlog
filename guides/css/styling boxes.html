@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Styling Boxes</title>
+    <link rel="stylesheet" href="../source/common.css">
+    <link rel="stylesheet" href="styling_boxes.css">
+    <script type="text/javascript" src="styling_boxes.js"></script>
+</head>
+<body>
+    <p><span class="tspan">box model rectangle & box-sizing</span></p>
+    <div>
+        <!-- box model -->
+        <div>
+            <code><label for="bsSel">box-sizing: </label></code>
+            <select name="bsSel" onchange="box_sizing_changed(event)">
+                <option value="border-box">border-box;</option>
+                <option value="content-box">content-box;</option>
+            </select>
+        </div>
+        <div class="boxContainer">
+            <div class="box">
+                <p style="background-color: gray;margin: 0;height: 100%;">
+                    <code>
+                        width: 480px;<br>
+                        height: 360px;<br>
+                        padding: 30px;<br>
+                        margin: 30px;<br>
+                        <span id="boxSizingSpan">box-sizing: border-box;</span>
+                    </code>
+                    <br>
+                    <br>
+                    same <code>width</code> and <code>height</code>, different <code>box-sizing</code>;
+                </p>
+            </div>
+        </div>
+        <div >
+            <div class="boxIcon" style="border: 1px dashed black;"></div> margin
+            <div class="boxIcon" style="background: black;"></div> border
+            <div class="boxIcon" style="background: red;"></div> padding
+            <div class="boxIcon" style="background: gray;"></div> content
+        </div>
+
+        <!-- overflow -->
+        <p><span class="tspan">overflow</span></p>
+        <div>
+            <code><label for="ofSel">overflow: </label></code>
+            <select name="ofSel" onchange="overflow_changed(event)">
+                <option value="auto" label="aa">auto;</option>
+                <option value="hidden">hidden;</option>
+                <option value="visible">visible;</option>
+            </select>
+        </div>
+        <div class="overflow">
+            <code>overflow: auto;</code>
+            <div>
+                    <code>auto: </code> content is hidden, scroll bars are shown<br>
+                     <code>hidden: </code>content is hidden, scroll bars are hidden<br>
+                    <code>visible: </code>content is shown, scroll bars are hidden<br>
+                </code>
+            </div>
+        </div>
+
+        <!-- background-clip -->
+        <p><span class="tspan">background-clip</span></p>
+        <div>
+            <code><label for="bcSel">background-clip: </label></code>
+            <select name="bcSel" onchange="background_clip_changed(event)">
+                <option value=" border-box" label="aa"> border-box;</option>
+                <option value="padding-box">padding-box;</option>
+                <option value="content-box">content-box;</option>
+            </select>
+        </div>
+        <div class="background-clip">
+            <code>background-clip: border-box;</code>
+            <p>
+                <code>border-box: </code> the bg extends to the outside edge of the border<br>
+                <code>padding-box: </code>the bg extends to the outside edge of the padding<br>
+                <code>content-box: </code>the bg within the content box<br>
+            </p>
+        </div>
+
+        <!-- background-clip -->
+        <p><span class="tspan">margin collapsing</span></p>
+        <div style="padding: 5px; border: 1px dashed black; display: inline-block;float: left;margin-right: 20px;">
+            <div style="border: 2px solid black; margin-bottom: 10px; width: 200px;height: 50px;">
+                <code>margin-bottom: 10px;</code>
+            </div>
+            <div style="border: 2px solid black; margin-top:  20px; width: 200px;height: 50px;">
+                <code>margin-top: 20px;</code>
+            </div>
+        </div>
+        <p style="width: 600px;">if two adjacent elements both have the margin set on them. and the two margins touch, the larger of the two remains, and the smaller one disappears. (effect on vertical, not horizontal) </p>
+
+         <!-- background-clip -->
+         <div style="clear: left; "></div>
+        <p><span class="tspan">outline</span></p>
+        <div style="border: 1px dashed black;padding: 5px;display: inline-block;">
+            <div class="outline">
+                <code>
+                    width: 400px;<br>
+                    height: 200px;<br>
+                    border: 10px solid black;<br>
+                    border-radius: 50px;<br>
+                    outline: 10px red dashed;<br>
+                </code>
+            </div>
+            <p>parent div(the dashed box)<br><code>border: 1px dashed black;padding: 5px</code></p>
+            <p><code>outline</code> is not part of the box model and never <br>take up space(can't changing the size of the box)</p>
+        </div>
+
+        <a class="test" href="#">test</a>
+    </div>
+</body>
+</html>

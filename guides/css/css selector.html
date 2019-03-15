@@ -2,8 +2,125 @@
 <html>
 <head>
     <title>CSS Selector</title>
+    <link rel="stylesheet" href="../source/common.css">
+    <link rel="stylesheet" href="css_selector.css">
 </head>
 <body>
-    CSS Selector
+    <div class="main_div">
+
+        <details class="typeDetails">
+            <summary><strong>Simple Selector</strong></summary>
+            <div class="line_div div_card">
+                Type Selector: <code>p{}</code><br>
+                Class Selector: <code>.class{}</code><br>
+                ID Selector: <code>#id{}</code><br>
+                Universal Selector: <code>*{}</code><br>
+            </div>
+        </details>
+
+        <details class="typeDetails" open>
+            <summary><strong>Attribute Selector</strong></summary>
+            <div class="line_div div_card">
+                <p><span class="tspan">Presence and value attribute selectors</span></p>
+
+                <p class="p_code"><code>[attr]{}</code>: have the attribute <code>attr</code>, whatever it's value</p>
+                <div class="attr_div" data-test>
+                    <small>data-test</small><br>
+                    <code>[data-test]{color: black;}</code>
+                </div>
+
+                <p class="p_code"><code>[attr=val]{}</code>: only <code>attr</code> === <code>val</code></p>
+                <div style="display: flex;">
+                    <div class="attr_div" data-test="hello">
+                         <small>data-test='hello'</small><br>
+                        <code>[data-test='hello']{color: red;}</code> //match
+                    </div>
+
+                    <div class="attr_div" data-test="hello hi">
+                         <small>data-test='hello hi'</small><br> 
+                        <code>[data-test='hello']{color: red;}</code> //mismatch
+                    </div>
+                </div>
+
+                <p class="p_code"><code>[attr~=val]{}</code>: only the attribute <code>val</code> is one of the 'space-separated' list</p>
+                <div style="display: flex;">
+                    <div class="attr_div" data-test="world">
+                         <small>data-test='world'</small><br>
+                        <code>[data-test~='world']{color: blue;}</code> //match
+                    </div>
+
+                    <div class="attr_div" data-test="world test">
+                         <small>data-test='world test'</small><br> 
+                        <code>[data-test~='world']{color: blue;}</code> //match
+                    </div>
+
+                     <div class="attr_div" data-test="world!!!">
+                         <small>data-test='world!!!'</small><br> 
+                        <code>[data-test~='world']{color: blue;}</code> //mismatch
+                    </div>
+                </div>
+
+            </div>
+            <div class="line_div div_card">
+                <p><span class="tspan">Substring value attribute selectors</span></p>
+
+                 <p class="p_code"><code>[attr^=val]{}</code>: <code>attr</code> must start with <code>val</code></p>
+                  <div style="display: flex;">
+                     <div class="attr_div" data-test="yourbro">
+                             <small>data-test='yourbro'</small><br>
+                            <code>[data-test^='your']{color: yellow;}</code> //match
+                        </div>
+
+                        <div class="attr_div" data-test="your bro">
+                             <small>data-test='your bro'</small><br> 
+                            <code>[data-test^='your']{color: yellow;}</code> //match
+                        </div>
+
+                        <div class="attr_div" data-test="you    r bro">
+                             <small>data-test='you    r bro'</small><br> 
+                            <code>[data-test^='your']{color: yellow;}</code> //mismatch
+                        </div>
+                  </div>
+
+
+                  <p class="p_code"><code>[attr$=val]{}</code>: <code>attr</code> must end with <code>val</code></p>
+                  <div style="display: flex;">
+                     <div class="attr_div" data-test="he he da">
+                             <small>data-test='he he da'</small><br>
+                            <code>[data-test$='da']{color: orange;}</code> //match
+                        </div>
+
+                        <div class="attr_div" data-test="heheda">
+                             <small>data-test='heheda'</small><br> 
+                            <code>[data-test$='da']{color: orange;}</code> //match
+                        </div>
+
+                        <div class="attr_div" data-test="hehed a">
+                             <small>data-test='hehed a'</small><br> 
+                            <code>[data-test$='da']{color: orange;}</code> //mismatch
+                        </div>
+                  </div>
+
+                  <p class="p_code"><code>[attr*=val]{}</code>: <code>value</code> contains <code>val</code></p>
+                  <div style="display: flex;">
+                     <div class="attr_div" data-test="my name is tom">
+                             <small>data-test='my name is tom'</small><br>
+                            <code>[data-test*='da']{color: orange;}</code> //match
+                        </div>
+
+                        <div class="attr_div" data-test="mynameistom">
+                             <small>data-test='mynameistom'</small><br> 
+                            <code>[data-test*='da']{color: orange;}</code> //match
+                        </div>
+
+                        <div class="attr_div" data-test="my name i      s tom">
+                             <small>data-test='my name i    s tom'</small><br> 
+                            <code>[data-test*='da']{color: orange;}</code> //mismatch
+                        </div>
+                  </div>
+            </div>
+        </details>
+
+    </div>
 </body>
 </html>
