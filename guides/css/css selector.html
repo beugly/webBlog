@@ -4,9 +4,13 @@
     <title>CSS Selector</title>
     <link rel="stylesheet" href="../source/common.css">
     <link rel="stylesheet" href="css_selector.css">
+    <script type="text/javascript" src="css_selector.js"></script>
 </head>
-<body>
+<body onload="onload()">
     <div class="main_div">
+
+
+
 
         <details class="typeDetails">
             <summary><strong>Simple Selector</strong></summary>
@@ -18,106 +22,175 @@
             </div>
         </details>
 
-        <details class="typeDetails" open>
+
+
+
+
+
+        <details class="typeDetails">
             <summary><strong>Attribute Selector</strong></summary>
             <div class="line_div div_card">
-                <p><span class="tspan">Presence and value attribute selectors</span></p>
+                <p><span class="tspan">Introduction</span></p>
+                <div class="note">
+                    <strong>Presence and value attribute selectors:</strong><br>
+                    <ul>
+                        <li><code>[attr]{}</code>: have the attribute <code>attr</code>, whatever it's value;</li>
+                        <li><code>[attr=val]{}</code>: only <code>attr</code> === <code>val</code>;</li>
+                        <li><code>[attr~=val]{}</code>: only the attribute <code>val</code> is one of the <strong>'space-separated'</strong> list;</li>
+                    </ul>
 
-                <p class="p_code"><code>[attr]{}</code>: have the attribute <code>attr</code>, whatever it's value</p>
-                <div class="attr_div" data-test>
-                    <small>data-test</small><br>
-                    <code>[data-test]{color: black;}</code>
+                    <strong>Substring value attribute selectors:</strong>
+                    <ul>
+                        <li><code>[attr^=val]{}</code>: <code>attr</code> must start with <code>val</code>;</li>
+                        <li><code>[attr$=val]{}</code>: <code>attr</code> must end with <code>val</code>;</li>
+                        <li><code>[attr*=val]{}</code>: <code>value</code> contains <code>val</code>;</li>
+                    </ul>
                 </div>
-
-                <p class="p_code"><code>[attr=val]{}</code>: only <code>attr</code> === <code>val</code></p>
-                <div style="display: flex;">
-                    <div class="attr_div" data-test="hello">
-                         <small>data-test='hello'</small><br>
-                        <code>[data-test='hello']{color: red;}</code> //match
-                    </div>
-
-                    <div class="attr_div" data-test="hello hi">
-                         <small>data-test='hello hi'</small><br> 
-                        <code>[data-test='hello']{color: red;}</code> //mismatch
-                    </div>
-                </div>
-
-                <p class="p_code"><code>[attr~=val]{}</code>: only the attribute <code>val</code> is one of the 'space-separated' list</p>
-                <div style="display: flex;">
-                    <div class="attr_div" data-test="world">
-                         <small>data-test='world'</small><br>
-                        <code>[data-test~='world']{color: blue;}</code> //match
-                    </div>
-
-                    <div class="attr_div" data-test="world test">
-                         <small>data-test='world test'</small><br> 
-                        <code>[data-test~='world']{color: blue;}</code> //match
-                    </div>
-
-                     <div class="attr_div" data-test="world!!!">
-                         <small>data-test='world!!!'</small><br> 
-                        <code>[data-test~='world']{color: blue;}</code> //mismatch
-                    </div>
-                </div>
-
+        
             </div>
+
             <div class="line_div div_card">
-                <p><span class="tspan">Substring value attribute selectors</span></p>
+                <p><span class="tspan">Example</span></p>
+                <div style="margin: 5px;">
+                    <label for="attr_sel">choose the selector :</label><br>
+                    <code>document.getElementById('attrContainer').querySelector("</code>
+                    <select name="attr_sel" class="selec" onchange="setAttrSelectorStyles('attrContainer', event.currentTarget.value)">
+                        <option value="[data-test]" selected="selected">[data-test]</option>
+                        <option value="[data-test='hello']">[data-test='hello']</option>
+                        <option value="[data-test~='hello']">[data-test~='hello']</option>
+                        <option value="[data-test^='hello']">[data-test^='hello']</option>
+                        <option value="[data-test$='world']">[data-test$='world']</option>
+                        <option value="[data-test*='hello']">[data-test*='hello']</option>
+                    </select>
+                    <code>"){border-color: blue;}</code>
+                </div>
+        
+               <div id="attrContainer" style="display: flex; flex-wrap: wrap;">
+                   <div class="attr_div" data-test><code>data-test</code></div>
+                   <div class="attr_div" data-test="hello"><code>data-test="hello"</code></div>
+                   <div class="attr_div" data-test="hello world"><code>data-test="hello world"</code></div>
+                   <div class="attr_div" data-test="he llo wor ld"><code>data-test="he llo wor ld"</code></div>
+                   <div class="attr_div" data-test="helloworld"><code>data-test="helloworld"</code></div>
+                   <div class="attr_div" data-test="@helloworld@"><code>data-test="@helloworld@"</code></div>
+               </div>
+            </div>
+        </details>
 
-                 <p class="p_code"><code>[attr^=val]{}</code>: <code>attr</code> must start with <code>val</code></p>
-                  <div style="display: flex;">
-                     <div class="attr_div" data-test="yourbro">
-                             <small>data-test='yourbro'</small><br>
-                            <code>[data-test^='your']{color: yellow;}</code> //match
+
+
+
+
+
+
+        <details class="typeDetails" open>
+            <summary><strong>combinators and selector lists</strong></summary>
+            <div class="line_div div_card">
+                <p><span class="tspan">Introduction</span></p>
+                <div class="note">
+                    <strong>combinators and selector lists:</strong><br>
+                    <ul>
+                        <li><code>A, B</code>:  <code>A</code> or <code>B</code>;</li>
+                        <li><code>A B</code>:   <code>B</code> that is a <strong>descendant</strong> of <code>A</code> (<code>B</code> is child of <code>A</code> or <code>A's</code> child's child's child);</li>
+                        <li><code>A > B</code>:  element mathing B that is a <strong>direct</strong> child of an element matching <code>A</code>;</li>
+                        <li><code>A + B</code>:  <code>B</code> that is the next <strong>sibling</strong> of <code>A</code>;</li>
+                        <li><code>A ~ B</code>:  <code>B</code> that is one of the next <strong>sibling</strong> A;</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="line_div div_card">
+                <p><span class="tspan">Example : <code>A, B</code></span></p>
+                <div class="note">
+                    <code>#d1, .c1, div[name="n1"] {<br>&nbsp;&nbsp;&nbsp;&nbsp;width: 100px; height: 100px; border: 2px dashed blue; margin: 5px;<br>}</code>
+                </div>
+
+                <div style="display: flex;">
+                    <div id="d1"><code>id="d1"</code></div>
+                    <div class="c1"><code>class="c1"</code></div>
+                    <div name="n1"><code>name="n1"</code></div>
+                </div>
+            </div>
+
+
+             <div class="line_div div_card">
+                <p><span class="tspan">Example : <code>A B</code></span></p>
+                <div class="note">
+                    <code>.c2 div {<br>&nbsp;&nbsp;&nbsp;&nbsp;border: 1px solid blue; margin: 10px; margin: 5px;<br>}</code><br>
+                    <code>B1, B2, C1, C2</code> all matching
+                </div>
+
+                <div style="padding: 10px; border: 1px solid black;" class="c2">
+                    <code>class="c2"</code> (A) 
+                    <div>
+                        B1 (parent is A)
+                        <div>
+                            C1 (parent is B1)
                         </div>
-
-                        <div class="attr_div" data-test="your bro">
-                             <small>data-test='your bro'</small><br> 
-                            <code>[data-test^='your']{color: yellow;}</code> //match
+                    </div>
+                    <div>
+                        B2 (parent is A)
+                        <div>
+                            C2 (parent is B2)
                         </div>
+                    </div>
+                </div>
+            </div>
 
-                        <div class="attr_div" data-test="you    r bro">
-                             <small>data-test='you    r bro'</small><br> 
-                            <code>[data-test^='your']{color: yellow;}</code> //mismatch
+            <div class="line_div div_card">
+                <p><span class="tspan">Example : <code>A>B</code></span></p>
+                <div class="note">
+                    <code>.c5>div {<br>&nbsp;&nbsp;&nbsp;&nbsp;border: 1px solid blue; margin: 10px; margin: 5px;<br>}</code><br>
+                    <code>B1, B2</code> is direct child matching <br>
+                    <code>C1, C2</code> is descendant but not direct child mismatching <br>
+
+                </div>
+
+                <div style="padding: 10px; border: 1px solid black;" class="c5">
+                    <code>class="c5"</code> (A) 
+                    <div>
+                        B1 (parent is A)
+                        <div style="outline: 1px dashed black;">
+                            C1 (parent is B1)
                         </div>
-                  </div>
-
-
-                  <p class="p_code"><code>[attr$=val]{}</code>: <code>attr</code> must end with <code>val</code></p>
-                  <div style="display: flex;">
-                     <div class="attr_div" data-test="he he da">
-                             <small>data-test='he he da'</small><br>
-                            <code>[data-test$='da']{color: orange;}</code> //match
+                    </div>
+                    <div>
+                        B2 (parent is A)
+                        <div style="outline: 1px dashed black;">
+                            C2 (parent is B2)
                         </div>
+                    </div>
+                </div>
+            </div>
 
-                        <div class="attr_div" data-test="heheda">
-                             <small>data-test='heheda'</small><br> 
-                            <code>[data-test$='da']{color: orange;}</code> //match
-                        </div>
 
-                        <div class="attr_div" data-test="hehed a">
-                             <small>data-test='hehed a'</small><br> 
-                            <code>[data-test$='da']{color: orange;}</code> //mismatch
-                        </div>
-                  </div>
+              <div class="line_div div_card">
+                <p><span class="tspan">Example : <code>A+B</code></span></p>
+                <div class="note">
+                    <code>.c3+div {<br>&nbsp;&nbsp;&nbsp;&nbsp;background: red;<br>}</code>
+                </div>
+                 <div style="padding: 10px; border: 1px solid black; display: flex;">
+                    <div class="c3" style="border: 1px solid blue; flex: 1;margin: 5px">
+                        <code>class="c3"</code> (A)
+                    </div>
+                    <div style="border: 1px solid blue; flex: 1;margin: 5px">A'brother</div>
+                    <div style="border: 1px solid blue; flex: 1;margin: 5px">A'brother</div>
+                    <div style="border: 1px solid blue; flex: 1;margin: 5px">A'brother</div>
+                 </div>
+            </div>
 
-                  <p class="p_code"><code>[attr*=val]{}</code>: <code>value</code> contains <code>val</code></p>
-                  <div style="display: flex;">
-                     <div class="attr_div" data-test="my name is tom">
-                             <small>data-test='my name is tom'</small><br>
-                            <code>[data-test*='da']{color: orange;}</code> //match
-                        </div>
-
-                        <div class="attr_div" data-test="mynameistom">
-                             <small>data-test='mynameistom'</small><br> 
-                            <code>[data-test*='da']{color: orange;}</code> //match
-                        </div>
-
-                        <div class="attr_div" data-test="my name i      s tom">
-                             <small>data-test='my name i    s tom'</small><br> 
-                            <code>[data-test*='da']{color: orange;}</code> //mismatch
-                        </div>
-                  </div>
+            <div class="line_div div_card">
+                <p><span class="tspan">Example : <code>A~B</code></span></p>
+                <div class="note">
+                    <code>.c4~div {<br>&nbsp;&nbsp;&nbsp;&nbsp;background: red;<br>}</code>
+                </div>
+                <div style="padding: 10px; border: 1px solid black; display: flex;">
+                    <div class="c4" style="border: 1px solid blue; flex: 1;margin: 5px">
+                        <code>class="c4"</code> (A)
+                    </div>
+                    <div style="border: 1px solid blue; flex: 1;margin: 5px">A'brother</div>
+                    <div style="border: 1px solid blue; flex: 1;margin: 5px">A'brother</div>
+                    <div style="border: 1px solid blue; flex: 1;margin: 5px">A'brother</div>
+                 </div>
             </div>
         </details>
 
