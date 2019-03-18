@@ -12,7 +12,7 @@
 
 
 
-        <details class="typeDetails">
+        <details class="typeDetails" open>
             <summary><strong>Simple Selector</strong></summary>
             <div class="line_div div_card">
                 Type Selector: <code>p{}</code><br>
@@ -27,7 +27,7 @@
 
 
 
-        <details class="typeDetails">
+        <details class="typeDetails" open>
             <summary><strong>Attribute Selector</strong></summary>
             <div class="line_div div_card">
                 <p><span class="tspan">Introduction</span></p>
@@ -193,6 +193,63 @@
                  </div>
             </div>
         </details>
+
+
+        <details class="typeDetails" open>
+            <summary><strong>Pseudo Selector</strong></summary>
+            <div class="line_div div_card">
+                <div class="note">
+                    <ul>
+                        <li><code>:first-child</code> select the first element within another element</li>
+                        <li><code>:last-child</code> select the last element within another element</li>
+                        <li><code>:nth-child(index)</code> select the <code>index</code> element within another element(in order)</li>
+                        <li><code>:nth-last-child(index)</code> select the <code>index</code> element within another element from the back (reverse order)</li>
+                        <li><code>:only-child</code> select element that it is the only element inside of its parent</li>
+
+                        <li><code>:only-of-type</code> select the element of that type (the element is the only element inside its parent)</li>
+                        <li><code>:first-of-type</code> select the first element of that type within other element</li>
+                        <li><code>:last-of-type</code> select the last element of that type within other element</li>
+                        <li>
+                            <code>:nth-of-type()</code>
+                            <ul>
+                                <li><code>:nth-of-type(index)</code> select the <code>index</code> element of that type within other element</li>
+                                <li><code>:nth-of-type(odd)</code> select the <code>odd</code> element of that type within other element(1th, 3th, 5th...)</li>
+                                <li><code>:nth-of-type(even)</code> select the <code>even</code> element of that type within other element(2th, 4th, 6th....)</li>
+                                <li><div>
+                                    <code>:nth-of-type(An+b)</code> nth = b + A * n, n start at 0; (:nth-of-type(2n+1) ==> (1, 3, 5,...))<br>
+                                </div></li>
+                            </ul>
+                        </li>
+                        <li><code>:empty</code> select all empty elemenst of that type</li>
+                        <li><code>:not(selector)</code> select all elements that do not match selector. (:not(#someclass))</li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </details>
+
+
+        <div style="border: 1px solid black; padding: 10px;" class="test_div">
+            <a style="outline: 1px solid red; margin: 5px" class="test_div2">i am 1</a>
+            <a style="outline: 1px solid red; margin: 5px" class="test_div2">i am 2</a>
+            <a style="outline: 1px solid red; margin: 5px" class="test_div2">i am 3</a>
+            <a style="outline: 1px solid red; margin: 5px" class="test_div2">i am 4</a>
+            <a style="outline: 1px solid red; margin: 5px" class="test_div2">i am 5</a>
+            <a style="outline: 1px solid red; margin: 5px" class="test_div2">i am 6</a>
+            <a style="outline: 1px solid red; margin: 5px" class="test_div2">i am 7</a>
+            <a style="outline: 1px solid red; margin: 5px" class="test_div2">i am 8</a>
+            <a style="outline: 1px solid red; margin: 5px" class="test_div2">i am 9</a>
+            <a style="outline: 1px solid red; margin: 5px" class="test_div2">i am 10</a>
+        </div>
+
+
+        <style>
+            a:nth-of-type(2n+1) {
+                background: blue;
+            }
+        </style>
+
 
     </div>
 </body>
