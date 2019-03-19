@@ -175,10 +175,57 @@
             </ul>
             shorthand: <br>
             <code>border-image: url, slice, repeat</code>
-
+            
         </div>
 
+        <p><span class="tspan">box-shadow</span></p>
+        <div class="note">
+            <p><code>box-shadow: 5px 5px 5px rgba(255,225,0,0.5);</code></p>
+            four params in <code>box-shadow</code>
+            <ol>
+                <li>horizontal offset</li>
+                <li>vertical offset</li>
+                <li>blur radius</li>
+                <li>base color</li>
+            </ol>
+            <p><code>inset</code>: make the shadow become an inner shadow</p>
+            <div style="height: 100px;background-color: red; background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.5));
+            box-shadow: 5px 5px 5px rgba(0,0,0,1)">
+                outer shadow<br>
+                <code>box-shadow: 5px 5px 5px rgba(0,0,0,1)</code>
+            </div>
 
+            <div style="height: 100px;background-color: red; background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.5));
+            box-shadow: inset 5px 5px 5px rgba(0,0,0,1);margin-top: 20px;">
+                inner shadow<br>
+                <code>box-shadow: inset 5px 5px 5px rgba(0,0,0,1)</code>
+            </div>
+        </div>
+
+        <p><span class="tspan">filters</span></p>
+        <div class="note">
+            <div class="filterBox" 
+            style="background: url(https://interactive-examples.mdn.mozilla.net/media/examples/firefox-logo.svg) no-repeat;
+            background-position: right center;">
+                <code></code>
+            </div>
+
+            <label for="filterSel">select the filter</label>
+            <select name="filterSel" onchange="filterSelected(value, '.filterBox')" style="width: 300px;">
+                <option value="none">none</option>
+                <option value="blur(1px)">blur(1px)</option>
+                <option value="brightness(0.5)">brightness(0.5)</option>
+                <option value="contrast(200%)">contrast(200%)</option>
+                <option value="drop-shadow(10px 10px 6px black)">drop-shadow(10px 10px 6px black)</option>
+                <option value="grayscale(100%)">grayscale(100%)</option>
+                <option value="hue-rotate(90deg)">hue-rotate(90deg)</option>
+                <option value="invert(100%)">invert(100%)</option>
+                <option value="opacity(50%)">opacity(50%)</option>
+                <option value="saturate(200%)">saturate(200%)</option>
+                <option value="sepia(100%)">sepia(100%)</option>
+                <option value="invert(100%) drop-shadow(10px 10px 6px black)">invert(100%) drop-shadow(10px 10px 6px black)</option>
+            </select>
+        </div>
 
 
 

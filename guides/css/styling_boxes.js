@@ -32,3 +32,11 @@ function background_clip_changed(event) {
     var d = document.querySelector(".background-clip");
     d.style.backgroundClip = sel.value;
 }
+
+//filter selected
+function filterSelected(filter, selector) {
+    var ele = document.querySelector(selector);
+    ele.style.filter = filter;
+    c = ele.querySelector("code");
+    c.textContent = "filter:" + filter + ";";
+}
