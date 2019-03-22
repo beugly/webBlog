@@ -9,6 +9,7 @@
         <item name="css layout.html">CSS Layout</item>
         <item name="css transitions.html">CSS Transitions</item>
         <item name="css animation.html">CSS Animation</item>
+        <item name="centering in css.html">CSS Centering</item>
     </css>
 
     <js id="jsDetail" summary="JS" open="true">

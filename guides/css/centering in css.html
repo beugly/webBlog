@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Centering in CSS</title>
+    <link rel="stylesheet" href="../source/common.css">
+    <script type="text/javascript" src="../source/common.js"></script>
+    <style>
+        .h_container, .v_container, .vh_container {
+            border: 1px solid black;
+            padding: 5px;
+        }
+
+        .h_item, .v_item, .vh_item {
+            background-color: gray;
+            border: 1px solid red;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body onload="setCSSByCreatedSelects()">
+    <details>
+        <summary class="sum_catlog">Horizontal Center</summary>
+        <div>
+            <div class="h_container">
+                <div class="h_item">item1</div>
+                <div class="h_item">item2</div>
+                <div class="h_item">item3</div>
+            </div>
+
+            <div id="h_sel_container_parent">
+                <p><strong>CSS for container:</strong></p>
+                <script>
+                     createSelectForCSS("#h_sel_container_parent", "display", ".h_container", ['block', 'flex']);
+                     createSelectForCSS("#h_sel_container_parent", "text-align", ".h_container", ['center', 'left', 'right']);
+                     createSelectForCSS("#h_sel_container_parent", "justify-content", ".h_container"
+                        , ['flex-start', 'center', 'flex-end', 'space-around', 'space-between']);
+                </script>
+            </div>
+
+            <div id="h_sel_container_item">
+                <p><strong>CSS for items:</strong></p>
+                <script>
+                     createSelectForCSS("#h_sel_container_item", "display", ".h_item", ['block', 'inline-block']);
+                     createSelectForCSS("#h_sel_container_item", "margin", ".h_item", ['0', '0 auto']);
+                     createSelectForCSS("#h_sel_container_item", "width", ".h_item", ['auto', '100px']);
+                </script>
+            </div>
+
+        </div>
+    </details>
+
+    <details>
+        <summary class="sum_catlog">Vertical Center</summary>
+        <div>
+            <div class="v_container">
+                <div class="v_item">item1</div>
+                <div class="v_item">item2</div>
+                <div class="v_item">item3</div>
+            </div>
+
+            <div id="v_sel_container_parent">
+                <p><strong>CSS for container:</strong></p>
+                <script>
+                     createSelectForCSS("#v_sel_container_parent", "height", ".v_container", ['500px']);
+                     createSelectForCSS("#v_sel_container_parent", "flex-direction", ".v_container", ['column']);
+                     createSelectForCSS("#v_sel_container_parent", "display", ".v_container", ['block', 'flex']);
+                     createSelectForCSS("#v_sel_container_parent", "justify-content", ".v_container"
+                        , ['flex-start', 'center', 'flex-end', 'space-around', 'space-between']);
+                </script>
+            </div>
+
+            <div id="v_sel_container_item">
+                <p><strong>CSS for items:</strong></p>
+                <script>
+                     createSelectForCSS("#v_sel_container_item", "display", ".v_item", ['block', 'inline-block']);
+                     createSelectForCSS("#v_sel_container_item", "height", ".v_item", ['auto', '100px']);
+                     createSelectForCSS("#v_sel_container_item", "line-height", ".v_item", ['normal', '90px']);
+                </script>
+            </div>
+
+        </div>
+    </details>
+
+    <details open>
+        <summary class="sum_catlog">Both Horizontal And Vertical Center</summary>
+        <div>
+            <div class="vh_container">
+                <div class="vh_item">item1</div>
+                <div class="vh_item">item2</div>
+                <div class="vh_item">item3</div>
+            </div>
+
+            <div id="vh_sel_container_parent">
+                <p><strong>CSS for container:</strong></p>
+                <script>
+                     createSelectForCSS("#vh_sel_container_parent", "height", ".vh_container", ['500px']);
+                     createSelectForCSS("#vh_sel_container_parent", "flex-direction", ".vh_container", ['column']);
+                     createSelectForCSS("#vh_sel_container_parent", "display", ".vh_container", ['block', 'flex']);
+                     createSelectForCSS("#vh_sel_container_parent", "justify-content", ".vh_container"
+                        , ['flex-start', 'center', 'flex-end', 'space-around', 'space-between']);
+                </script>
+            </div>
+
+            <div id="vh_sel_container_item">
+                <p><strong>CSS for items:</strong></p>
+                <script>
+                     createSelectForCSS("#vh_sel_container_item", "display", ".vh_item", ['block', 'inline-block']);
+                     createSelectForCSS("#vh_sel_container_item", "width", ".vh_item", ['auto', '100px']);
+                     createSelectForCSS("#vh_sel_container_item", "height", ".vh_item", ['auto', '100px']);
+                     createSelectForCSS("#vh_sel_container_item", "line-height", ".vh_item", ['normal', '90px']);
+                </script>
+            </div>
+
+        </div>
+    </details>
+
+</body>
+</html>

@@ -1,5 +1,7 @@
   /* jshint esversion: 6 */ 
 
+
+
 /*main load*/
   function onload_main() {
     loadGuidesConfig();
@@ -12,9 +14,9 @@
 // set iframe height
 function onload_content() {
      var f = document.querySelector("#content_iframe");
-    var h = f.contentWindow.document.body.clientHeight;
-    console.log(f.contentWindow.document);
-    f.setAttribute("height", h);
+   var bodyH = f.contentWindow.document.body.scrollHeight;
+   var documentH = f.contentWindow.document.documentElement.scrollHeight;
+    f.setAttribute("height", Math.max(bodyH, documentH));
 }
 
 //===========create guides catalog============
