@@ -13,6 +13,9 @@ function createSelectForCSS(container_selector, style_attribute, target_selector
     var val;
     var opt;
     var c = document.createElement("code");
+    c.style.width = '160px';
+    c.style.display = 'inline-block';
+    // c.style.textAlign = 'right';
     c.textContent = style_attribute + ": ";
     div.appendChild(c);
 

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox Grid Float</title>
+    <link rel="stylesheet" href="../source/common.css">
+    <script type="text/javascript" src="../source/common.js"></script>
+</head>
+
+<body>
+    <details>
+        <summary class="sum_catlog">Floats</summary>
+        <div class="note">
+            <code>Float</code><strong> vs </strong><code>Position: absolute</code>
+            <ul>
+                <li><code>float</code> element remain a part of the normal flow. <code>absolute</code> element are removed from the normal flow.</li>
+            </ul>
+            clear floats:
+            <ul>
+                <li><strong>Add Empty Div</strong> with the css code <code>style="clear:both;"</code> after the float element.</li>
+                <li><strong>Overflow</strong> , setting the <code>overflow</code> to <code>hidden</code> or <code>auto</code> on its parent element</li>
+                <li><strong>:after{display:block;clear:both}</strong></li>
+            </ul>
+        </div>
+        <div style="border: 1px dashed black; padding: 5px;position: relative;">
+            <div style="border: 1px solid red;height: 100px;margin: 10px;"></div>
+            <div style="background: blue;height: 200px;width: 100px;float: left;position: relative;top: -50px;left: 100px;"></div>
+            <div style="clear: left"></div>
+            <div style="border: 1px solid red;height: 100px;margin: 10px;"></div>
+        </div>
+    </details>
+    
+
+    <details open>
+        <summary class="sum_catlog">Floats</summary>
+        <div class="note">
+            <strong>Properties for flex container: </strong>
+            <ul>
+                <li><code>display: flex | inline-flex</code></li> 
+                <li><code>flex-direction: row | row-reverse | column | column-reverse</code></li> 
+                <li><code>flex-wrap: nowrap | wrap | wrap-reverse</code></li>
+                <li><code>flex-flow: flex-direction flex-wrap</code> the shorthand.</li>
+                <li><code>justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly</code> align all the flex items along the main axis.</li>
+                <li><code>align-items: flex-start | flex-end | center | stretch | baseline</code> align all the flex item along the cross axis.</li>
+            </ul>
+            <strong>Properties for flex items: </strong>
+            <ul>
+                <li><code>order: number</code> controls the order of flex item appear in the flex contianer.</li>
+                <li><code>flex-grow: number</code> grow factor. default 0.</li>
+                <li><code>flex-shrink: number</code> shrink factor when overflow. default 1.</li>
+                <li><code>flex-basis: length</code> init size.</li>
+                <li><code>flex: none | flex-grow flex-shrink flex-basis</code> the shorthand.</li>
+                <li><code>align-self: flex-start | flex-end</code> broken <code>align-items</code></li>
+            </ul>
+            <p><strong>Note: <code>float clear vertical-align</code> have no effect on a flex item.</strong></p>
+        </div>
+
+        <div style="display:inline-flex; flex-flow: row wrap; width: 600px; height: 300px; border: 1px solid gray;text-align: center;">
+            <div style="background: #EA6049; flex: 100%;">flex:100%</div>
+            <div style="background: #F9E309; flex: 2;">flex: 2</div>
+            <div style="background: #195FC7; flex: 6;">flex: 6</div>
+            <div style="background: #F018E9; flex: 2;">flex: 2</div>
+            <div style="background: #1CD375; flex: 100%;">flex: 100%</div>
+        </div>
+        <div style="display:inline-flex; flex-flow: row wrap; width: 600px; height: 300px; border: 1px solid gray;text-align: center; 
+        align-items: flex-start;">
+            <div style="background: #EA6049; flex: 100%;">flex:100%</div>
+            <div style="background: #F9E309; flex: 2;">flex: 2</div>
+            <div style="background: #195FC7; flex: 6; align-self: flex-end;">flex: 6; align-self: flex-end;</div>
+            <div style="background: #F018E9; flex: 2;">flex: 2</div>
+            <div style="background: #1CD375; flex: 100%;">flex: 100%</div>
+        </div>
+    </details>
+</body>
+</html>
