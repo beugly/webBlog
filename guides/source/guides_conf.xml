@@ -16,5 +16,11 @@
     <js id="jsDetail" summary="JS" open="true">
         <item name="Manipulation Document.html">Manipulation Document</item>
         <item name="XHR-Fetch.html">XMLHttpRequest-Fetch</item>
+        <item name="JS index.html">JS index</item>
+        <item name="JS Design Partterns.html">JS Design Partterns</item>
     </js>
+
+    <ts id="tsDetail" summary="TS" open="true">
+        <item name="TS index.html">TS index</item>
+    </ts>
 </config>

@@ -26,7 +26,7 @@ let config_url = "source/guides_conf.xml";
 
 // load config
 function loadGuidesConfig() {
-    fetch(config_url)
+    fetch(config_url + "?t=" + Math.random())
     .then(function (response){
         return response.text();
     })
