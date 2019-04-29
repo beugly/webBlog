@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS ES6</title>
+    <link rel="stylesheet" href="../source/common.css">
+    <script type="text/javascript">
+        function test1(){
+             var [a, ...b] = [1, 2, 3, 4, 5];
+             console.log(a);    //1
+             console.log(b);    //[2, 3, 4, 5]
+        }
+
+        function test2() {
+            var c = [[], [1, 2], [3, 4, 5], [6], 7];
+            var d = [].concat(c);   //[[], [1, 2], [3, 4, 5], [6], 7]
+            console.log(d);
+        }
+
+        function test3() {
+             var c = [[], [1, 2], [3, 4, 5], [6], 7];
+            var e = [].concat(...c);   //[ 1, 2, 3, 4, 5, 6, 7 ];
+            console.log(e);
+        }
+    </script>
+</head>
+<body>
+    <div class="note">
+        <li>Module: SyntaxError: import declarations may only appear at top level of a module</li>
+        <li>
+             var [a, ...b] = [1, 2, 3, 4, 5]; <button onclick="test1()">result</button>
+        </li>
+
+        <li>
+             var c = [[], [1, 2], [3, 4, 5], [6], 7]; var d = [].concat(c);<button onclick="test2()">result</button>
+        </li>
+       
+        <li>
+            var c = [[], [1, 2], [3, 4, 5], [6], 7]; var e = [].concat(...c);<button onclick="test3()">result</button>
+        </li>
+    </div>
+</body>
+</html>
